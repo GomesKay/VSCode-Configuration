@@ -1,0 +1,73 @@
+{
+  // Tailwind
+  "tailwind-fold.autoFold": false,
+
+  // Tira o Mini Mapa do VSCode
+  "editor.minimap.enabled": false,
+
+  // Inicia com um Novo Arquivo no VSCode
+  "workbench.startupEditor": "newUntitledFile",
+
+  // Mostra o caminho das Pastas na Aplicação
+  "explorer.compactFolders": false,
+
+  // Unir Arquivos de Configuração
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": ".eslint*, eslint*, .prettier*, prettier*, tsconfig*, vite*, package-lock*",
+    "tailwind.config*": "tailwind.config*, postcss.config*",
+    ".env.local": ".env*",
+    ".env": ".env*"
+  },
+
+  // Terminal
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+  "terminal.integrated.env.windows": {},
+
+  // APC (Interface do VSCode)
+  "apc.font.family": "Inter",
+  "apc.listRow": {
+    "height": 24
+  },
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+
+  // Tema e Icons do VSCode
+  "workbench.iconTheme": "symbols",
+  "workbench.colorTheme": "Min Dark",
+  "workbench.productIconTheme": "fluent-icons",
+  "symbols.hidesExplorerArrows": false,
+
+  // Configuração do Editor de Código
+  "editor.tabSize": 2,
+  "editor.fontSize": 14,
+  "editor.lineHeight": 20,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.rulers": [80, 120],
+
+  // ESLint & Prettier
+  "files.autoSave": "afterDelay",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "eslint.enable": true,
+  "eslint.options": {
+    "extensions": [".js", ".jsx", ".ts", ".tsx"]
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "prettier.semi": false,
+  "prettier.singleQuote": false,
+  "prettier.tabWidth": 2,
+  "prettier.printWidth": 80,
+  "prettier.proseWrap": "preserve",
+  "prettier.endOfLine": "auto",
+  "prettier.bracketSpacing": true
+}
