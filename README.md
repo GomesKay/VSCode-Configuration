@@ -86,6 +86,7 @@
   "tabWidth": 2,
   "printWidth": 80,
   "endOfLine": "lf",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "plugins": ["prettier-plugin-tailwindcss"]
 }
 ```
