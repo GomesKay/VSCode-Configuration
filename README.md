@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | `npm init -y` | Faz a criação do _package.json_ | Inicializa o projeto rapidamente com as configurações padrão |
 | `npm i typescript -D` | Instala o TypeScript | Adiciona TypeScript como dependência de desenvolvimento |
-| `npx tsc -init` | Faz a criação do _tsconfig.json_ | Configura as opções de compilação do TypeScript |
+| `npx tsc --init` | Faz a criação do _tsconfig.json_ | Configura as opções de compilação do TypeScript |
 | `npm i @types/node tsx -D` | Adiciona os tipos do Node.js e o suporte para TypeScript | Garante a tipagem do Node.js no TypeScript e permite executar arquivos `.ts` diretamente |
 | `npm i fastify` | Instalação do Fastify | Framework rápido e eficiente para criar APIs com foco em performance |
 | `npm i -D --save-exact @biomejs/biome` | Instalação do Biome | Formatador de código, linter e ferramenta de análise rápida |
@@ -134,9 +134,12 @@
   "workbench.colorTheme": "Min Dark",
   "workbench.productIconTheme": "fluent-icons",
   "symbols.hidesExplorerArrows": false,
+  "symbols.folders.associations": {
+    "controllers": "folder-sky",
+  },
   "symbols.files.associations": {
-    "app.module.ts": "nest",
-    "app.service.ts": "nest-service",
+    "*.module.ts": "nest",
+    "*.service.ts": "nest-service",
     "prisma.module.ts": "nest",
     "prisma.service.ts": "nest-service"
   },
