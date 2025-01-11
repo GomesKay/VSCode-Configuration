@@ -78,6 +78,17 @@
 > [!NOTE]
 > Consulte a [documentação oficial do TailwindCSS + Prettier](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) para mais detalhes.
 
+### Script no _package.json_
+
+```
+"dev": "vite",
+"prettier": "prettier --write .",
+"prettier:check": "prettier --check .",
+"build": "tsc -b && vite build",
+"lint": "eslint .",
+"preview": "vite preview"
+```
+
 ### Configuração do _.prettierrc_
 
 ```
