@@ -38,6 +38,15 @@
   "workbench.colorTheme": "Min Dark",
   "workbench.productIconTheme": "fluent-icons",
   "symbols.hidesExplorerArrows": false,
+  "symbols.folders.associations": {
+    "controllers": "folder-sky"
+  },
+  "symbols.files.associations": {
+    "*.module.ts": "nest",
+    "*.service.ts": "nest-service",
+    "prisma.module.ts": "nest",
+    "prisma.service.ts": "nest-service"
+  },
 
   // Configuração do Editor de Código
   "editor.tabSize": 2,
