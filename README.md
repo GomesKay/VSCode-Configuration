@@ -10,7 +10,6 @@
 | `npm i typescript -D` | Instala o TypeScript | Adiciona TypeScript como dependência de desenvolvimento |
 | `npx tsc --init` | Faz a criação do _tsconfig.json_ | Configura as opções de compilação do TypeScript |
 | `npm i @types/node tsx -D` | Adiciona os tipos do Node.js e o suporte para TypeScript | Garante a tipagem do Node.js no TypeScript e permite executar arquivos `.ts` diretamente |
-| `npm i fastify` | Instalação do Fastify | Framework rápido e eficiente para criar APIs com foco em performance |
 | `npm i -D --save-exact @biomejs/biome` | Instalação do Biome | Formatador de código, linter e ferramenta de análise rápida |
 
 ### Configuração do _tsconfig.json_
@@ -20,7 +19,9 @@
 ### Script no _package.json_
 
 ```
-"dev": "tsx watch src/http/server.ts"
+"dev": "tsx watch src/http/server.ts",
+"format": "biome format .",
+"format:check": "biome check ."
 ```
 
 ### Configuração do _biome.json_
@@ -76,6 +77,17 @@
 
 > [!NOTE]
 > Consulte a [documentação oficial do TailwindCSS + Prettier](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) para mais detalhes.
+
+### Script no _package.json_
+
+```
+"dev": "vite",
+"prettier": "prettier --write .",
+"prettier:check": "prettier --check .",
+"build": "tsc -b && vite build",
+"lint": "eslint .",
+"preview": "vite preview"
+```
 
 ### Configuração do _.prettierrc_
 
