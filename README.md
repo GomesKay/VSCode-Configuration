@@ -10,52 +10,19 @@
 | `npm i typescript -D` | Instala o TypeScript | Adiciona TypeScript como dependência de desenvolvimento |
 | `npx tsc --init` | Faz a criação do _tsconfig.json_ | Configura as opções de compilação do TypeScript |
 | `npm i @types/node tsx -D` | Adiciona os tipos do Node.js e o suporte para TypeScript | Garante a tipagem do Node.js no TypeScript e permite executar arquivos `.ts` diretamente |
-| `npm i -D --save-exact @biomejs/biome` | Instalação do Biome | Formatador de código, linter e ferramenta de análise rápida |
 
 ### Configuração do _tsconfig.json_
 > [!Note]
 > Consulte a [documentação oficial do tsconfig/bases](https://github.com/tsconfig/bases?tab=readme-ov-file) para mais detalhes.
 
-### Script no _package.json_
+### Scripts no _package.json_
 
 ```
-"dev": "tsx watch src/http/server.ts",
-"format": "biome format .",
-"format:check": "biome check ."
-```
-
-### Configuração do _biome.json_
-
-```
-{
-  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "organizeImports": {
-    "enabled": true
-  },
-  "formatter": {
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineWidth": 80
-  },
-  "javascript": {
-    "formatter": {
-      "arrowParentheses": "asNeeded",
-      "jsxQuoteStyle": "double",
-      "quoteStyle": "double",
-      "semicolons": "asNeeded",
-      "trailingCommas": "es5"
-    }
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true
-    }
-  },
-  "files": {
-    "ignore": ["node_modules"]
-  }
-}
+"scripts": {
+  "dev": "tsx watch src/server.ts",
+  "lint": "eslint . --ext .ts",
+  "lint:fix": "eslint . --ext .ts --fix"
+},
 ```
 
 ---
@@ -66,41 +33,19 @@
 | --- | --- | --- |
 | `npm create vite@latest` | Faz a criação da template | Inicializa o projeto Vite com uma configuração padrão |
 | `npm install` | Instalação das dependências | Baixa todas as dependências listadas no _package.json_ |
-| `npm install -D tailwindcss postcss autoprefixer` | Instala o TailwindCSS e suas ferramentas | Adiciona TailwindCSS, PostCSS e Autoprefixer como dependências de desenvolvimento |
-| `npx tailwindcss init -p` | Cria os arquivos de configuração do TailwindCSS e PostCSS | Gera o arquivo _tailwind.config.js_ e _postcss.config.js_ para personalizar as configurações do Tailwind |
-| `npm install -D prettier prettier-plugin-tailwindcss` | Instala o Prettier e o plugin TailwindCSS para Prettier | Prettier formata o código, enquanto o plugin organiza as classes do TailwindCSS automaticamente em uma ordem específica |
 
-### TailwindCSS
-
-> [!NOTE]
-> Consulte a [documentação oficial do TailwindCSS](https://tailwindcss.com/docs/guides/vite) para mais detalhes.
-
-> [!NOTE]
-> Consulte a [documentação oficial do TailwindCSS + Prettier](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) para mais detalhes.
-
-### Script no _package.json_
+### Scripts no _package.json_
 
 ```
-"dev": "vite",
-"prettier": "prettier --write .",
-"prettier:check": "prettier --check .",
-"build": "tsc -b && vite build",
-"lint": "eslint .",
-"preview": "vite preview"
-```
-
-### Configuração do _.prettierrc_
-
-```
-{
-  "semi": false,
-  "singleQuote": false,
-  "tabWidth": 2,
-  "printWidth": 80,
-  "endOfLine": "lf",
-  "bracketSpacing": true,
-  "plugins": ["prettier-plugin-tailwindcss"]
-}
+"scripts": {
+  "dev": "vite",
+  "build": "tsc -b && vite build",
+  "lint": "eslint . --ext .ts,.tsx",
+  "lint:fix": "eslint . --ext .ts,.tsx --fix",
+  "preview": "vite preview",
+  "prettier": "prettier --write .",
+  "prettier:check": "prettier --check ."
+},
 ```
 
 ## 🖥️ VSCode
@@ -118,6 +63,12 @@
 
   // Mostra o caminho das Pastas na Aplicação
   "explorer.compactFolders": false,
+
+  // PrismaORM
+  "[prisma]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
 
   // Unir Arquivos de Configuração
   "explorer.fileNesting.enabled": true,
@@ -143,11 +94,11 @@
 
   // Tema e Icons do VSCode
   "workbench.iconTheme": "symbols",
-  "workbench.colorTheme": "Min Dark",
+  "workbench.colorTheme": "Rosé Pine",
   "workbench.productIconTheme": "fluent-icons",
   "symbols.hidesExplorerArrows": false,
   "symbols.folders.associations": {
-    "controllers": "folder-sky",
+    "controllers": "folder-sky"
   },
   "symbols.files.associations": {
     "*.module.ts": "nest",
