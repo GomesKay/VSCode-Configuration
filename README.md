@@ -4,14 +4,15 @@
 
 ## ⚙️ Back-end
 
-| Comandos | Descrição | Por que usar? |
-| --- | --- | --- |
-| `npm init -y` | Faz a criação do _package.json_ | Inicializa o projeto rapidamente com as configurações padrão |
-| `npm i typescript -D` | Instala o TypeScript | Adiciona TypeScript como dependência de desenvolvimento |
-| `npx tsc --init` | Faz a criação do _tsconfig.json_ | Configura as opções de compilação do TypeScript |
+| Comandos                   | Descrição                                                | Por que usar?                                                                            |
+| -------------------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `npm init -y`              | Faz a criação do _package.json_                          | Inicializa o projeto rapidamente com as configurações padrão                             |
+| `npm i typescript -D`      | Instala o TypeScript                                     | Adiciona TypeScript como dependência de desenvolvimento                                  |
+| `npx tsc --init`           | Faz a criação do _tsconfig.json_                         | Configura as opções de compilação do TypeScript                                          |
 | `npm i @types/node tsx -D` | Adiciona os tipos do Node.js e o suporte para TypeScript | Garante a tipagem do Node.js no TypeScript e permite executar arquivos `.ts` diretamente |
 
 ### Configuração do _tsconfig.json_
+
 > [!Note]
 > Consulte a [documentação oficial do tsconfig/bases](https://github.com/tsconfig/bases?tab=readme-ov-file) para mais detalhes.
 
@@ -29,10 +30,10 @@
 
 ## 💻 Front-end
 
-| Comandos | Descrição | Por que usar? |
-| --- | --- | --- |
-| `npm create vite@latest` | Faz a criação da template | Inicializa o projeto Vite com uma configuração padrão |
-| `npm install` | Instalação das dependências | Baixa todas as dependências listadas no _package.json_ |
+| Comandos                 | Descrição                   | Por que usar?                                          |
+| ------------------------ | --------------------------- | ------------------------------------------------------ |
+| `npm create vite@latest` | Faz a criação da template   | Inicializa o projeto Vite com uma configuração padrão  |
+| `npm install`            | Instalação das dependências | Baixa todas as dependências listadas no _package.json_ |
 
 ### Scripts no _package.json_
 
