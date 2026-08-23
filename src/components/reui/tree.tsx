@@ -1,7 +1,7 @@
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
 import type { ItemInstance } from "@headless-tree/core"
-import { ChevronDownIcon,MinusIcon, PlusIcon } from "lucide-react"
+import { ChevronDownIcon, MinusIcon, PlusIcon } from "lucide-react"
 import { createContext, useContext } from "react"
 
 import { cn } from "@/lib/utils"
@@ -221,4 +221,4 @@ function TreeDragLine({
   )
 }
 
-export { Tree, TreeDragLine,TreeItem, TreeItemLabel }
+export { Tree, TreeDragLine, TreeItem, TreeItemLabel }

@@ -1,41 +1,20 @@
 import {
   BracketsPurple,
-  BracketsYellow,
   Commitlint,
   Eslint,
-  FolderOrangeCode,
   FolderUtils,
   FolderVSCode,
   Markdown,
   Node,
   NPM,
   Prettier,
-  TypeScript,
 } from "@react-symbols/icons"
-import type { JSX } from "react"
 
-export interface Item {
-  name: string
-  children?: string[]
-  icon?: JSX.Element
-  content?: string
-}
-
-const NOT_IMPLEMENTED = "Não implementado"
-
-export const items: Record<string, Item> = {
-  crm: {
-    name: "CRM",
-    children: ["vscode", "src", "package", "readme"],
-  },
-  vscode: {
-    name: ".vscode",
-    children: ["settings.json"],
+export const itemsAccordion = [
+  {
+    value: "vscode-settings",
     icon: <FolderVSCode className="size-5" />,
-  },
-  "settings.json": {
-    name: "settings.json",
-    icon: <BracketsYellow className="size-5" />,
+    trigger: "VSCode Settings",
     content: `{
   // Tailwind
   "tailwind-fold.autoFold": false,
@@ -126,19 +105,10 @@ export const items: Record<string, Item> = {
   ],
 }`,
   },
-  src: {
-    name: "src",
-    children: ["lib", "index.css"],
-    icon: <FolderOrangeCode className="size-5" />,
-  },
-  lib: {
-    name: "lib",
-    children: ["utils.ts"],
+  {
+    value: "lib",
     icon: <FolderUtils className="size-5" />,
-  },
-  "utils.ts": {
-    name: "utils.ts",
-    icon: <TypeScript className="size-5" />,
+    trigger: "lib/utils.ts",
     content: `import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -146,28 +116,18 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }`,
   },
-  "index.css": {
-    name: "index.css",
+  {
+    value: "index-css",
     icon: <BracketsPurple className="size-5" />,
+    trigger: "src/index.css",
     content: `@utility ctn {
   @apply relative mx-auto;
 }`,
   },
-  package: {
-    name: "package.json",
-    children: [
-      "package.json",
-      ".npmrc",
-      "eslint.config.js",
-      "eslint.config.mjs",
-      ".prettierrc",
-      ".cz-config.cjs",
-    ],
+  {
+    value: "package-json",
     icon: <Node className="size-5" />,
-  },
-  "package.json": {
-    name: "package.json",
-    icon: <Node className="size-5" />,
+    trigger: "package.json",
     content: `{
   "scripts": {
     "lint": "eslint . --fix",
@@ -184,15 +144,17 @@ export function cn(...inputs: ClassValue[]) {
   }
 }`,
   },
-  ".npmrc": {
-    name: ".npmrc",
+  {
+    value: ".npmrc",
     icon: <NPM className="size-5" />,
+    trigger: ".npmrc",
     content: `legacy-peer-deps=true
 `,
   },
-  "eslint.config.js": {
-    name: "eslint.config.js",
+  {
+    value: "eslint-config",
     icon: <Eslint className="size-5" />,
+    trigger: "eslint.config.js",
     content: `import js from "@eslint/js"
 import { defineConfig } from "eslint/config"
 import prettierConfig from "eslint-config-prettier"
@@ -230,9 +192,10 @@ export default defineConfig([
   prettierConfig,
 ])`,
   },
-  "eslint.config.mjs": {
-    name: "eslint.config.mjs",
+  {
+    value: "eslint-config-next",
     icon: <Eslint className="size-5" />,
+    trigger: "eslint.config.mjs",
     content: `import { defineConfig } from "eslint/config"
 import nextVitals from "eslint-config-next/core-web-vitals"
 import nextTypescript from "eslint-config-next/typescript"
@@ -263,9 +226,10 @@ export default defineConfig([
   prettierConfig,
 ])`,
   },
-  ".prettierrc": {
-    name: ".prettierrc",
+  {
+    value: "prettier-config",
     icon: <Prettier className="size-5" />,
+    trigger: "prettierrc",
     content: `{
   "semi": false,
   "singleQuote": false,
@@ -276,9 +240,10 @@ export default defineConfig([
   "plugins": ["prettier-plugin-tailwindcss"]
 }`,
   },
-  ".cz-config.cjs": {
-    name: ".cz-config.cjs",
+  {
+    value: "cz-config",
     icon: <Commitlint className="size-5" />,
+    trigger: ".cz-config.cjs",
     content: `module.exports = {
   types: [
     { value: "✨ feat", name: "✨ feat:     Nova funcionalidade" },
@@ -322,9 +287,10 @@ export default defineConfig([
   },
 }`,
   },
-  readme: {
-    name: "README.md",
+  {
+    value: "readme",
     icon: <Markdown className="size-5" />,
-    content: NOT_IMPLEMENTED,
+    trigger: "README.md",
+    content: "Não implementado",
   },
-}
+]
