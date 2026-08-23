@@ -98,4 +98,4 @@ function Badge({
   })
 }
 
-export { Badge, type BadgeProps,badgeVariants }
+export { Badge, type BadgeProps, badgeVariants }
