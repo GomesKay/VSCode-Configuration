@@ -10,7 +10,7 @@ export function useCopy() {
 
     setTimeout(() => {
       setCopied(false)
-    }, 6000)
+    }, 5000)
   }
 
   return {

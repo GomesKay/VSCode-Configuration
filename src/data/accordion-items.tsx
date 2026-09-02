@@ -10,11 +10,15 @@ import {
   Prettier,
 } from "@react-symbols/icons"
 
+const NO_INSTALLATION_PACKAGE = "Nenhum pacote de instalação"
+const NOT_IMPLEMENTED = "Não implementado"
+
 export const itemsAccordion = [
   {
     value: "vscode-settings",
     icon: <FolderVSCode className="size-5" />,
-    trigger: "VSCode Settings",
+    name: "VSCode Settings",
+    libs: NO_INSTALLATION_PACKAGE,
     content: `{
   // Tailwind
   "tailwind-fold.autoFold": false,
@@ -108,7 +112,8 @@ export const itemsAccordion = [
   {
     value: "lib",
     icon: <FolderUtils className="size-5" />,
-    trigger: "lib/utils.ts",
+    name: "lib/utils.ts",
+    libs: `npm install clsx tailwind-merge`,
     content: `import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -119,7 +124,8 @@ export function cn(...inputs: ClassValue[]) {
   {
     value: "index-css",
     icon: <BracketsPurple className="size-5" />,
-    trigger: "src/index.css",
+    name: "src/index.css",
+    libs: NO_INSTALLATION_PACKAGE,
     content: `@utility ctn {
   @apply relative mx-auto;
 }`,
@@ -127,7 +133,8 @@ export function cn(...inputs: ClassValue[]) {
   {
     value: "package-json",
     icon: <Node className="size-5" />,
-    trigger: "package.json",
+    name: "package.json",
+    libs: NO_INSTALLATION_PACKAGE,
     content: `{
   "scripts": {
     "lint": "eslint . --fix",
@@ -147,66 +154,63 @@ export function cn(...inputs: ClassValue[]) {
   {
     value: ".npmrc",
     icon: <NPM className="size-5" />,
-    trigger: ".npmrc",
+    name: ".npmrc",
+    libs: NO_INSTALLATION_PACKAGE,
     content: `legacy-peer-deps=true
 `,
   },
   {
     value: "eslint-config",
     icon: <Eslint className="size-5" />,
-    trigger: "eslint.config.js",
+    name: "eslint.config.js",
+    libs: `npm install -D eslint @eslint/js globals typescript-eslint eslint-plugin-react-hooks eslint-plugin-react-refresh eslint-plugin-simple-import-sort eslint-config-prettier`,
     content: `import js from "@eslint/js"
-import { defineConfig } from "eslint/config"
-import prettierConfig from "eslint-config-prettier"
-import simpleImportSort from "eslint-plugin-simple-import-sort"
 import globals from "globals"
+import reactHooks from "eslint-plugin-react-hooks"
+import reactRefresh from "eslint-plugin-react-refresh"
+import simpleImportSort from "eslint-plugin-simple-import-sort"
 import tseslint from "typescript-eslint"
+import prettierConfig from "eslint-config-prettier/flat"
+import { defineConfig, globalIgnores } from "eslint/config"
 
 export default defineConfig([
-  { ignores: ["dist", "build", "coverage", "node_modules"] },
-
+  globalIgnores(["dist"]),
   {
-    files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
-    plugins: { js },
-    extends: ["js/recommended"],
-    languageOptions: { globals: globals.browser },
-  },
-
-  tseslint.configs.recommended,
-
-  {
-    files: ["**/*.{js,jsx,ts,tsx}"],
+    files: ["**/*.{ts,tsx}"],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
     plugins: {
       "simple-import-sort": simpleImportSort,
+    },
+    languageOptions: {
+      globals: globals.browser,
     },
     rules: {
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-      ],
     },
   },
-
   prettierConfig,
 ])`,
   },
   {
     value: "eslint-config-next",
     icon: <Eslint className="size-5" />,
-    trigger: "eslint.config.mjs",
-    content: `import { defineConfig } from "eslint/config"
+    name: "eslint.config.mjs",
+    libs: `npm install -D eslint eslint-config-next eslint-plugin-simple-import-sort eslint-config-prettier`,
+    content: `import { defineConfig, globalIgnores } from "eslint/config"
 import nextVitals from "eslint-config-next/core-web-vitals"
-import nextTypescript from "eslint-config-next/typescript"
+import nextTs from "eslint-config-next/typescript"
 import simpleImportSort from "eslint-plugin-simple-import-sort"
 import prettierConfig from "eslint-config-prettier/flat"
 
-export default defineConfig([
-  { ignores: [".next", "out", "build", "node_modules"] },
-
+const eslintConfig = defineConfig([
   ...nextVitals,
-  ...nextTypescript,
+  ...nextTs,
 
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
@@ -216,20 +220,21 @@ export default defineConfig([
     rules: {
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-      ],
     },
   },
 
   prettierConfig,
-])`,
+
+  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
+])
+
+export default eslintConfig`,
   },
   {
     value: "prettier-config",
     icon: <Prettier className="size-5" />,
-    trigger: "prettierrc",
+    name: "prettierrc",
+    libs: `npm install -D prettier prettier-plugin-tailwindcss`,
     content: `{
   "semi": false,
   "singleQuote": false,
@@ -243,7 +248,8 @@ export default defineConfig([
   {
     value: "cz-config",
     icon: <Commitlint className="size-5" />,
-    trigger: ".cz-config.cjs",
+    name: ".cz-config.cjs",
+    libs: `npm install -D commitizen cz-customizable`,
     content: `module.exports = {
   types: [
     { value: "✨ feat", name: "✨ feat:     Nova funcionalidade" },
@@ -290,7 +296,8 @@ export default defineConfig([
   {
     value: "readme",
     icon: <Markdown className="size-5" />,
-    trigger: "README.md",
-    content: "Não implementado",
+    name: "README.md",
+    libs: NO_INSTALLATION_PACKAGE,
+    content: NOT_IMPLEMENTED,
   },
 ]
