@@ -98,9 +98,6 @@ export const itemsAccordion = [
     "editor.formatOnSave": true,
   },
   "eslint.enable": true,
-  "eslint.options": {
-    "extensions": [".js", ".jsx", ".ts", ".tsx"],
-  },
   "eslint.validate": [
     "javascript",
     "javascriptreact",
